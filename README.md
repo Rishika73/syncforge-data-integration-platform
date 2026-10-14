@@ -3,7 +3,7 @@
 
 ### 🚀 Live Demo
 
-[Explore the SyncForge Monitoring Dashboard](PASTE_YOUR_STREAMLIT_APP_URL_HERE)
+[Explore the SyncForge Monitoring Dashboard](https://syncforge-data-integration-platform-fxfbcy4zshrriucndsdmuc.streamlit.app/)
 
 Interactive public dashboard showcasing synchronization
 history, execution metrics, and failure analysis using
