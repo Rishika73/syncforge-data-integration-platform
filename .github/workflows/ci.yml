@@ -1,0 +1,83 @@
+
+name: SyncForge CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: Python Tests with PostgreSQL
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+
+        env:
+          POSTGRES_USER: syncforge
+          POSTGRES_PASSWORD: ci_test_password
+          POSTGRES_DB: syncforge
+
+        ports:
+          - 5433:5432
+
+        options: >-
+          --health-cmd "pg_isready -U syncforge -d syncforge"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      SYNCFORGE_DATABASE_URL: postgresql://syncforge:ci_test_password@127.0.0.1:5433/syncforge
+
+    steps:
+      # Step 1: Download project code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Install Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      # Step 3: Install project dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      # Step 4: Initialize PostgreSQL database
+      - name: Initialize PostgreSQL schema
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+
+          import psycopg
+
+          sql = Path("sql/init.sql").read_text(
+              encoding="utf-8"
+          )
+
+          with psycopg.connect(
+              os.environ["SYNCFORGE_DATABASE_URL"]
+          ) as connection:
+              connection.execute(sql)
+
+          print("Database schema initialized successfully!")
+          PY
+
+      # Step 5: Check Python syntax
+      - name: Check Python syntax
+        run: |
+          python -m compileall -q syncforge tests
+
+      # Step 6: Run automated tests
+      - name: Run automated tests
+        run: |
+          python -m pytest -q

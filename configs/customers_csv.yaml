@@ -1,0 +1,12 @@
+sync_name: csv_customers_sync
+source_name: csv_customers
+sync_mode: snapshot
+batch_size: 2
+
+source:
+  type: csv
+  file_path: sample_data/customers.csv
+
+destination:
+  type: postgres
+  connection_env: SYNCFORGE_DATABASE_URL

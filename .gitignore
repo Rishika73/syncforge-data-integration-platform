@@ -1,0 +1,29 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+
+checkpoints.json
+data/
+*.tmp
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Environment and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local runtime files
+checkpoints.json
+*.log
+.DS_Store
+
+# Streamlit local settings
+.streamlit/secrets.toml
