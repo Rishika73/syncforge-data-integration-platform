@@ -1,6 +1,15 @@
 
 # SyncForge — Config-Driven Data Integration Platform
 
+### 🚀 Live Demo
+
+[Explore the SyncForge Monitoring Dashboard](PASTE_YOUR_STREAMLIT_APP_URL_HERE)
+
+Interactive public dashboard showcasing synchronization
+history, execution metrics, and failure analysis using
+clearly labeled synthetic data.
+
+
 ### A Modular Python Framework for Reliable Data Ingestion, Incremental Synchronization, and Operational Monitoring
 
 [![SyncForge CI](https://github.com/Rishika73/syncforge-data-integration-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/Rishika73/syncforge-data-integration-platform/actions/workflows/ci.yml)
