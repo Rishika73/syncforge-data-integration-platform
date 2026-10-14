@@ -8,8 +8,7 @@
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791)
 ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED)
 ![Streamlit](https://img.shields.io/badge/Dashboard-Streamlit-FF4B4B)
-![License](https://img.shields.io/badge/License-Not%20Specified-lightgrey)
-
+![License](https://img.shields.io/badge/License-MIT-green)
 **SyncForge** is a configuration-driven data integration platform built with Python, PostgreSQL, Docker, and Streamlit.
 
 It provides reusable connectors for ingesting data from REST APIs and CSV files, supports incremental and snapshot synchronization, and includes transactional checkpoint management, batch processing, job scheduling, execution tracking, and a monitoring dashboard.
